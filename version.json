@@ -1,0 +1,7 @@
+{
+  "versionName": "1.0.0+78",
+  "versionCode": 78,
+  "pageUrl": "https://stack-doc-app-dl.app.workbuddy.host/",
+  "apkUrl": "https://stack-doc-app-dl.app.workbuddy.host/sorted-v1.0.0-78-arm64-release.apk",
+  "notes": "v78：照片详情页新增「导出到相册」——底部操作栏和全屏看图页都能一键把当前页（或全部页）存进系统相册「妥帖」；加密保存的文件导出前会先提示不再受加密保护。"
+}

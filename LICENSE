@@ -1,0 +1,54 @@
+妥帖 (Sorted) — 专有软件许可声明
+
+版权所有 (c) 2026 ayuan2025。保留所有权利。
+
+## 一、本仓库包含什么
+
+本仓库仅用于「妥帖 (Sorted)」安卓应用的**发布与说明**，包含：
+
+- 应用的安装说明、功能介绍等文档
+- 应用图标等素材
+- 版本信息文件（version.json）
+- Release 附件中的 APK 安装包
+
+**本仓库不包含、也不会包含该应用的源代码。**
+
+## 二、你可以做什么
+
+- 免费下载、安装、使用本应用（含个人与家庭用途）
+- 将下载页链接分享给他人
+- 阅读、引用本仓库中的说明文档
+
+## 三、你不可以做什么
+
+未经作者书面许可，你不得：
+
+1. 反编译、逆向工程、反汇编本应用，或尝试获取其源代码
+2. 修改、翻译、制作衍生版本
+3. 二次分发、转售、出租，或将本应用用于任何商业用途
+4. 移除或改动应用内的著作权、商标标识
+5. 将本应用或其中的素材用于训练机器学习模型
+
+## 四、免责声明
+
+本应用按「现状」提供，不作任何明示或暗示的担保，包括但不限于
+适销性、特定用途适用性及不侵权的担保。
+
+作者不对因使用或无法使用本应用而导致的任何直接、间接、偶然、
+特殊或后果性损害承担责任。
+
+## 五、第三方组件
+
+本应用使用了若干第三方开源组件（均为宽松许可，如 MIT / BSD-3-Clause /
+Apache-2.0），其许可条款在应用内「关于」页面予以标示和致谢。
+
+## 六、联系
+
+如有授权、合作或侵权相关事宜，请通过本仓库 Issue 联系。
+
+---
+
+Copyright (c) 2026 ayuan2025. All rights reserved.
+This repository distributes a closed-source application. No source code is
+provided. Reverse engineering, modification, redistribution and commercial use
+are prohibited without written permission from the author.
