@@ -1,7 +1,7 @@
 {
-  "versionName": "1.0.0+78",
-  "versionCode": 78,
-  "pageUrl": "https://sorted-download.app.workbuddy.host/",
-  "apkUrl": "https://sorted-download.app.workbuddy.host/sorted-v1.0.0-78-arm64-release.apk",
-  "notes": "v78：照片详情页新增「导出到相册」——底部操作栏和全屏看图页都能一键把当前页（或全部页）存进系统相册「妥帖」；加密保存的文件导出前会先提示不再受加密保护。"
+  "versionName": "1.0.0+91",
+  "versionCode": 91,
+  "pageUrl": "https://sorted-download-49059.app.workbuddy.host/",
+  "apkUrl": "https://sorted-download-49059.app.workbuddy.host/sorted-v1.0.0-91-arm64-release.apk",
+  "notes": "v91：修掉自动摆正把正图转成 180° 的问题。此前判断上下颠倒只能靠「倒过来读到的字数更少」，而这一项权重太小，几十字的 OCR 噪声就能翻转判断，于是本来正着的纸被翻成字朝下。现在 90° 仍靠文字行角度判断（很可靠），180° 单独设了严格得多的门槛：读不出明显更多字就不翻。宁可留一张颠倒的图让人一眼看出、手动转，也不把正图转歪。"
 }

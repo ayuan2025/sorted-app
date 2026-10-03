@@ -15,11 +15,11 @@
 
 | 渠道 | 地址 | 说明 |
 | --- | --- | --- |
-| **国内下载页（推荐）** | https://sorted-download.app.workbuddy.host/ | 国内直连，APK + 安装说明 + 校验值 |
+| **国内下载页（推荐）** | https://sorted-download-49059.app.workbuddy.host/ | 国内直连，APK + 安装说明 + 校验值 |
 | GitHub Release | 本仓库 Releases | 海外或国内访问不畅时用 |
 
-**当前版本**：v1.0.0+78（versionCode 78）· arm64 · 35.3 MB
-**SHA-256**：`3fc2f62410c415a3c8f64866b8af106608c0f8599134c1f83f0a74f5075288af`
+**当前版本**：v1.0.0+91（versionCode 91）· arm64 · 35.7 MB
+**SHA-256**：`c19288689e91d2734e0a7510d034448a38f1fc1d8bf4945e34ca5c9da07b1919`
 
 > **只支持安卓**（Android 7.0 及以上，arm64），**暂无 iPhone 版**。
 > 华为纯血鸿蒙（HarmonyOS NEXT / 5.0+）不支持 APK，装不了。
