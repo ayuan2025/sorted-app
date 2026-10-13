@@ -1,7 +1,7 @@
 {
-  "versionName": "1.0.0+91",
-  "versionCode": 91,
-  "pageUrl": "https://sorted-download-49059.app.workbuddy.host/",
-  "apkUrl": "https://sorted-download-49059.app.workbuddy.host/sorted-v1.0.0-91-arm64-release.apk",
-  "notes": "v91：修掉自动摆正把正图转成 180° 的问题。此前判断上下颠倒只能靠「倒过来读到的字数更少」，而这一项权重太小，几十字的 OCR 噪声就能翻转判断，于是本来正着的纸被翻成字朝下。现在 90° 仍靠文字行角度判断（很可靠），180° 单独设了严格得多的门槛：读不出明显更多字就不翻。宁可留一张颠倒的图让人一眼看出、手动转，也不把正图转歪。"
+  "versionName": "1.0.0+97",
+  "versionCode": 97,
+  "pageUrl": "https://stack-doc-app-dl.app.workbuddy.host/",
+  "apkUrl": "https://stack-doc-app-dl.app.workbuddy.host/sorted-v1.0.0-97-arm64-release.apk",
+  "notes": "v97：修复实拍弱边界场景自动选边严重错误。此前小票压在浅色桌面、暗光环境下，扫描引擎会把纸内的折痕、纹理误判成边界框（锁住一个倾斜四边形、框住纸内一块而非整张纸），与 memo+ 同源的同一问题。本版移植 memo+ 的弱边界补全：在低阈值下补找候选四边形，要求其包住强检测结果、面积足够大、且通过全分辨率颜色校验（确认框内确实是纸、框外是背景），从而正确框住整张小票。识别、自动摆正、详情页功能均不变；不联网上传、不新增权限；签名不变可直接覆盖安装 v96。"
 }

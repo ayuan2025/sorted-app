@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妥帖 Sorted · 交付说明（v1.0.0+97 / +96）</title>
+<link rel="icon" type="image/png" href="app-icon.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(160deg, #1a1c2e 0%, #2d3250 60%, #3a4166 100%);
+    color: #eef0f6;
+    padding: 22px 16px 40px;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  .top {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px; padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .top img { width: 44px; height: 44px; }
+  .top .t { font-size: 18px; font-weight: 700; }
+  .top .s { font-size: 12.5px; color: #aab0c8; }
+  .back {
+    display: inline-block; margin-bottom: 16px; padding: 8px 14px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; color: #dfe2ee; text-decoration: none; font-size: 13.5px;
+  }
+  h1, h2, h3 { line-height: 1.45; margin: 26px 0 10px; }
+  h1 { font-size: 21px; color: #fff; margin-top: 0; }
+  h2 {
+    font-size: 17.5px; color: #c9cfff; padding-left: 11px;
+    border-left: 4px solid #5661f0;
+  }
+  h3 { font-size: 15px; color: #b9c2ff; }
+  p { margin: 9px 0; font-size: 14.5px; color: #d7dae8; }
+  ul, ol { padding-left: 22px; margin: 9px 0; }
+  li { font-size: 14.5px; color: #d7dae8; margin-bottom: 5px; }
+  li > ul, li > ol { margin: 5px 0; }
+  strong { color: #fff; font-weight: 600; }
+  code {
+    background: rgba(255,255,255,0.1); border-radius: 5px;
+    padding: 1px 5px; font-size: 13px; color: #d9c8ff;
+    word-break: break-all;
+  }
+  pre {
+    background: rgba(0,0,0,0.32); border-radius: 10px; padding: 12px 14px;
+    overflow-x: auto; margin: 12px 0;
+  }
+  pre code { background: none; padding: 0; color: #cdd3ea; }
+  blockquote {
+    border-left: 4px solid rgba(201,167,255,0.55);
+    background: rgba(201,167,255,0.08);
+    border-radius: 0 10px 10px 0;
+    padding: 10px 14px; margin: 12px 0;
+  }
+  blockquote p { color: #cfc6ea; font-size: 14px; margin: 3px 0; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px;
+    display: block; overflow-x: auto; white-space: nowrap;
+  }
+  th, td {
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 8px 10px; text-align: left; vertical-align: top;
+  }
+  th { background: rgba(86,97,240,0.22); color: #c9ceff; font-weight: 600; }
+  td { color: #d7dae8; white-space: normal; }
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.14); margin: 24px 0; }
+  a { color: #b9c2ff; }
+  .foot { margin-top: 30px; font-size: 12.5px; color: #8a90aa; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <img src="app-icon.png" alt="妥帖 Sorted">
+      <div>
+        <div class="t">妥帖 Sorted 本版说明</div>
+        <div class="s">v1.0.0+97 · 修复弱边界自动选边严重错误</div>
+      </div>
+    </div>
+    <a class="back" href="index.html">← 返回下载页</a>
+
+    <h1>妥帖 Sorted 交付说明</h1>
+
+    <h2>v1.0.0+97 · 修复弱边界自动选边严重错误</h2>
+    <blockquote><p>本次重点：<strong>修复实拍弱边界场景自动选边严重错误</strong>。小票压在浅色桌面、暗光环境下，扫描引擎原本会把纸内的折痕、纹理误判成边界（锁住一个倾斜四边形、框住纸内一块而非整张纸），与 memo+ 同源的同一问题。现已移植 memo+ 的弱边界补全：低阈值补找候选四边形，要求包住强检测结果、面积足够大、且通过全分辨率颜色校验（确认框内是纸、框外是背景），从而正确框住整张小票。识别、自动摆正、详情页功能均不变；签名不变可直接覆盖安装 v96。</p></blockquote>
+
+    <h2>v1.0.0+96 交付说明</h2>
+    <blockquote><p>本次重点：<strong>自动裁边新增「线段检测」通路</strong>，边被挡住也能框出来。识别、自动摆正、详情页功能均不变。</p></blockquote>
+
+    <h2>一、原来的裁边为什么会失手</h2>
+    <p>自动裁边走的是「找闭合轮廓」：把边缘连成连通域、取凸包、把凸包简化成四边形。这条路要求四条边<strong>连成一个完整闭环</strong>，而实拍里最容易破坏闭环的就是：</p>
+    <ul>
+      <li>一条边被手、桌沿、钱包压住；</li>
+      <li>一条边跑出画面；</li>
+      <li>一段边与背景对比较弱，过不了阈值。</li>
+    </ul>
+    <p>关键在于：<strong>断圈不一定表现为「找不到框」</strong>。凸包会把环上的缺口直接填实，于是算法给出一个<strong>看起来挺像、但被截短了的框</strong>——比如本该是整张纸，只框到左半边。</p>
+
+    <h2>二、这版怎么补</h2>
+    <p>加一条与轮廓法<strong>互补</strong>的通路（业界做法：Apple 的 CIDetector、Adobe 的实时边界模型都是这条）：</p>
+    <ul>
+      <li>把边缘像素用 <strong>Hough 变换</strong>投票聚成若干条<strong>直线</strong>——不做「这坨像素属于哪条边」的判断，因此对断边免疫；</li>
+      <li>枚举 4 条线的 3 种「两两成对」分组，取跨族的两两交点还原四边形（近似平行的同族两条交点在无穷远，本来就交不出来）；</li>
+      <li>边中段被遮住时，残留那一小段照样投出它的直线，另外三条边也在，<strong>四个角照样能补回来</strong>。</li>
+    </ul>
+    <p>关键设计：两条通路的候选<strong>丢进同一个池子、共用同一套评分</strong>（面积 × 方正度 + 候选支持度 + 上一帧贴近度）与<strong>同一道全分辨率颜色校验</strong>，不是简单叠加或先后覆盖——谁更可信用谁。</p>
+
+    <h2>三、护栏</h2>
+    <ul>
+      <li>贴着画幅的大框（占比 ≥92%）不在线段通路里主动去凑，交给「整页」分支处理——那通常是取景框或图片自身边框，不是纸；</li>
+      <li>角点证据只要求 <strong>2/4</strong> 个：被遮住那条边往往连<strong>角</strong>一起没了，此时那侧两角附近本就不该有边缘像素。要求 3~4 个等于把这条通路自己修不了的东西也挡掉；</li>
+      <li>补了<strong>凸性校验</strong>：自交（蝴蝶结）四边形能通过面积与角度检查，但一旦胜出，透视矫正会按自交框裁出左右对调的废图——比检不到更糟。</li>
+    </ul>
+
+    <h2>四、性能与影响面</h2>
+    <ul>
+      <li>典型证件约 <strong>31–41ms</strong>，文字密集表单约 <strong>205ms</strong>，跑在后台隔离体，<strong>不占界面线程</strong>；</li>
+      <li>识别、自动摆正（v93 的「人话分」判据）、详情页的加页/拆页等功能<strong>一律未动</strong>；</li>
+      <li>不联网上传、不新增任何权限，识别模型仍在应用内本地运行；</li>
+      <li>安装包签名不变（SHA-256 见下载页），<strong>可直接覆盖安装 v95</strong>，不用先卸载。</li>
+    </ul>
+
+    <h2>五、测试</h2>
+    <ul>
+      <li>新增 5 条线段通路单测（含「边连角一起消失仍能补出完整框」这条关键用例，并<strong>先断言轮廓法在该输入上确实失败</strong>，否则测不出这条通路的价值）；</li>
+      <li>全量 304 通过 / 4 失败，4 条均为预先存在的测试环境问题（测试运行器缺 ML Kit 插件的 <code>MissingPluginException</code>），与本次改动无关；<code>flutter analyze lib</code> 0 issues。</li>
+    </ul>
+
+    <h2>六、分发说明</h2>
+    <p>分发<strong>只走镜像站</strong>（<code>sorted-download-49059.app.workbuddy.host</code>）。App 内「检查更新」与「前往下载页」都指向镜像站，取包只用这一个链接。签名不变可直接覆盖安装。</p>
+
+    <div class="foot">妥帖 · Sorted · 证件收纳 · 完全离线 · 仅安卓版</div>
+  </div>
+</body>
+</html>
